@@ -43,7 +43,7 @@ usage: |-
       depends_on                = [module.resource_group]
       source                    = "clouddrove/data-factory/azure"
       name                      = "app"
-      environment               = "test"
+      environment               = "test-env"
       label_order               = ["name", "environment"]
       resource_group_name       = module.resource_group.resource_group_name
       location                  = module.resource_group.resource_group_location
