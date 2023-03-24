@@ -17,7 +17,9 @@ module "labels" {
 resource "random_string" "random" {
   length  = 5
   special = false
-  numeric = true
+  lower   = true
+  upper   = false
+  numeric = false
 
   keepers = {
     domain_name_label = var.name
