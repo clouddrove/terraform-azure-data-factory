@@ -153,3 +153,9 @@ variable "existing_private_dns_zone_resource_group_name" {
   default     = ""
   description = "The name of the existing resource group"
 }
+
+variable "private_dns_zone_name" {
+  type        = string
+  default     = "privatelink.blob.core.windows.net"
+  description = "The name of the private dns zone name which will used to create private endpoint link."
+}
