@@ -90,3 +90,66 @@ variable "delete" {
   default     = "60m"
   description = "Used when deleting the Resource Group."
 }
+
+# Identity
+variable "identity_type" {
+  description = "Specifies the type of Managed Service Identity that should be configured on this Storage Account. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned` (to enable both)."
+  type        = string
+  default     = "SystemAssigned"
+}
+
+variable "identity_ids" {
+  description = "Specifies a list of User Assigned Managed Identity IDs to be assigned to this Storage Account."
+  type        = list(string)
+  default     = null
+}
+variable "key_vault_id" {
+  type    = string
+  default = null
+}
+variable "principal_id" {
+  type        = list(string)
+  default     = []
+  description = " The ID of the Principal (User, Group or Service Principal) to assign the Role Definition to. Changing this forces a new resource to be created."
+}
+variable "cmk_encryption_enabled" {
+  type    = bool
+  default = false
+}
+variable "shared_access_key_enabled" {
+  type        = bool
+  default     = true
+  description = " Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). The default value is true."
+}
+
+# Private endpoint
+
+variable "virtual_network_id" {
+  type        = string
+  default     = ""
+  description = "The name of the virtual network"
+}
+
+variable "subnet_id" {
+  type        = string
+  default     = ""
+  description = "The resource ID of the subnet"
+}
+
+variable "enable_private_endpoint" {
+  type        = bool
+  default     = false
+  description = "enable or disable private endpoint to storage account"
+}
+
+variable "existing_private_dns_zone" {
+  type        = string
+  default     = null
+  description = "Name of the existing private DNS zone"
+}
+
+variable "existing_private_dns_zone_resource_group_name" {
+  type        = string
+  default     = ""
+  description = "The name of the existing resource group"
+}
