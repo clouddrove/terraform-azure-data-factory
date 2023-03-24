@@ -38,4 +38,8 @@ resource "azurerm_data_factory" "factory" {
       global_parameter
     ]
   }
+
+  identity {
+    type = "SystemAssigned"
+  }
 }
