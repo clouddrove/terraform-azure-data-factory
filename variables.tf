@@ -91,6 +91,14 @@ variable "delete" {
   description = "Used when deleting the Resource Group."
 }
 
+# Data Factory
+
+variable "public_network_enabled" {
+  type        = bool
+  default     = true
+  description = "Is the Data Factory visible to the public network? Defaults to true."
+}
+
 # Identity
 variable "identity_type" {
   description = "Specifies the type of Managed Service Identity that should be configured on this Storage Account. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned` (to enable both)."
