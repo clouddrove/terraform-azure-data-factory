@@ -106,6 +106,7 @@ Here is an example of how you can use this module in your inventory structure:
 | label\_order | Label order, e.g. `name`,`application`. | `list(any)` | `[]` | no |
 | location | Location where resource should be created. | `string` | `""` | no |
 | machine\_count | Number of Virtual Machines to create. | `number` | `0` | no |
+| managed\_virtual\_network\_enabled | Is default virtual machine enabled for data factory or not. | `bool` | `null` | no |
 | managedby | ManagedBy, eg 'CloudDrove' or 'AnmolNagpal'. | `string` | `"anmol@clouddrove.com"` | no |
 | name | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
 | principal\_id | The ID of the Principal (User, Group or Service Principal) to assign the Role Definition to. Changing this forces a new resource to be created. | `list(string)` | `[]` | no |
