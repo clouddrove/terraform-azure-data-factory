@@ -27,12 +27,13 @@ resource "random_string" "random" {
 }
 
 resource "azurerm_data_factory" "factory" {
-  count                  = var.enabled ? 1 : 0
-  name                   = format("%s-data-factory", module.labels.id)
-  location               = var.location
-  resource_group_name    = var.resource_group_name
-  public_network_enabled = var.public_network_enabled
-  tags                   = module.labels.tags
+  count                           = var.enabled ? 1 : 0
+  name                            = format("%s-data-factory", module.labels.id)
+  location                        = var.location
+  resource_group_name             = var.resource_group_name
+  public_network_enabled          = var.public_network_enabled
+  managed_virtual_network_enabled = var.managed_virtual_network_enabled
+  tags                            = module.labels.tags
 
   lifecycle {
     ignore_changes = [

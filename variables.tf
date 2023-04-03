@@ -99,6 +99,12 @@ variable "public_network_enabled" {
   description = "Is the Data Factory visible to the public network? Defaults to true."
 }
 
+variable "managed_virtual_network_enabled" {
+  type        = bool
+  default     = null
+  description = "Is default virtual machine enabled for data factory or not."
+}
+
 # Identity
 variable "identity_type" {
   description = "Specifies the type of Managed Service Identity that should be configured on this Storage Account. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned` (to enable both)."
