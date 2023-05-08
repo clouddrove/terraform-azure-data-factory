@@ -6,33 +6,38 @@ provider "azurerm" {
 module "resource_group" {
   source      = "clouddrove/resource-group/azure"
   version     = "1.0.2"
-  label_order = ["name", "environment", ]
   name        = "datafactory"
   environment = "test"
+  label_order = ["name", "environment", ]
   location    = "North Europe"
 }
 
-#Vnet
 module "vnet" {
-  source  = "clouddrove/virtual-network/azure"
-  version = "1.0.4"
-
-  name        = "app"
-  environment = "example"
-  label_order = ["name", "environment"]
-
+  source              = "clouddrove/vnet/azure"
+  version             = "1.0.2"
+  name                = "app"
+  environment         = "test"
   resource_group_name = module.resource_group.resource_group_name
   location            = module.resource_group.resource_group_location
   address_space       = "10.0.0.0/16"
-  enable_ddos_pp      = false
+}
+
+module "subnet" {
+  source               = "clouddrove/subnet/azure"
+  version              = "1.0.2"
+  name                 = "app"
+  environment          = "test"
+  label_order          = ["name", "environment"]
+  resource_group_name  = module.resource_group.resource_group_name
+  location             = module.resource_group.resource_group_location
+  virtual_network_name = join("", module.vnet.vnet_name)
 
   #subnet
-  subnet_names                  = ["subnet1"]
-  subnet_prefixes               = ["10.0.1.0/24"]
-  disable_bgp_route_propagation = false
+  subnet_names    = ["subnet1"]
+  subnet_prefixes = ["10.0.1.0/24"]
 
-  # routes
-  enabled_route_table = false
+  # route_table
+  enable_route_table = false
   routes = [
     {
       name           = "rt-test"
@@ -46,11 +51,10 @@ module "data_factory" {
   depends_on = [
     module.resource_group
   ]
-  source = "../../"
+  source = "clouddrove/data-factory/azure"
 
   name                = "app"
   environment         = "test"
-  label_order         = ["name", "environment"]
   enabled             = true
   location            = module.resource_group.resource_group_location
   resource_group_name = module.resource_group.resource_group_name
@@ -63,5 +67,5 @@ module "data_factory" {
   # # Private Endpoint
   # enable_private_endpoint = false
   # # virtual_network_id = module.vnet.vnet_id
-  # subnet_id = module.vnet.vnet_subnets[0]
+  # subnet_id = module.subnet.default_subnet_id[0]
 }
