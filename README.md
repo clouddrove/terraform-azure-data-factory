@@ -103,7 +103,7 @@ Here is an example of how you can use this module in your inventory structure:
 | identity\_ids | Specifies a list of User Assigned Managed Identity IDs to be assigned to this Storage Account. | `list(string)` | `null` | no |
 | identity\_type | Specifies the type of Managed Service Identity that should be configured on this Storage Account. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned` (to enable both). | `string` | `"SystemAssigned"` | no |
 | key\_vault\_id | n/a | `string` | `null` | no |
-| label\_order | Label order, e.g. `name`,`application`. | `list(any)` | `[]` | no |
+| label\_order | Label order, e.g. `name`,`application`. | `list(any)` | <pre>[<br>  "name",<br>  "environment"<br>]</pre> | no |
 | location | Location where resource should be created. | `string` | `""` | no |
 | machine\_count | Number of Virtual Machines to create. | `number` | `0` | no |
 | managed\_virtual\_network\_enabled | Is default virtual machine enabled for data factory or not. | `bool` | `null` | no |
