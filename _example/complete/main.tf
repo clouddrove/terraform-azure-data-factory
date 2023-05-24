@@ -6,7 +6,7 @@ provider "azurerm" {
 module "resource_group" {
   source      = "clouddrove/resource-group/azure"
   version     = "1.0.2"
-  name        = "datafactory"
+  name        = "app"
   environment = "test"
   label_order = ["name", "environment", ]
   location    = "North Europe"
@@ -27,7 +27,6 @@ module "subnet" {
   version              = "1.0.2"
   name                 = "app"
   environment          = "test"
-  label_order          = ["name", "environment"]
   resource_group_name  = module.resource_group.resource_group_name
   location             = module.resource_group.resource_group_location
   virtual_network_name = join("", module.vnet.vnet_name)
@@ -55,7 +54,6 @@ module "data_factory" {
 
   name                = "app"
   environment         = "test"
-  enabled             = true
   location            = module.resource_group.resource_group_location
   resource_group_name = module.resource_group.resource_group_name
 
