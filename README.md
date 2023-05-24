@@ -76,8 +76,7 @@ Here is an example of how you can use this module in your inventory structure:
     depends_on                = [module.resource_group]
     source                    = "clouddrove/data-factory/azure"
     name                      = "app"
-    environment               = "test-env"
-    label_order               = ["name", "environment"]
+    environment               = "test"
     resource_group_name       = module.resource_group.resource_group_name
     location                  = module.resource_group.resource_group_location
   ```
