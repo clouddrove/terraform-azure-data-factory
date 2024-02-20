@@ -47,16 +47,15 @@ module "subnet" {
 }
 
 module "data_factory" {
-  version = "3.92.0"
   depends_on = [
     module.resource_group
   ]
-  source = "clouddrove/data-factory/azure"
+  source = "./../../"
 
-  name                = "app"
-  environment         = "test"
-  location            = module.resource_group.resource_group_location
-  resource_group_name = module.resource_group.resource_group_name
+  name                   = "app"
+  environment            = "test"
+  location               = module.resource_group.resource_group_location
+  resource_group_name    = module.resource_group.resource_group_name
   public_network_enabled = false
 
   #identity
