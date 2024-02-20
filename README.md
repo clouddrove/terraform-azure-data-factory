@@ -51,12 +51,6 @@ We have [*fifty plus terraform modules*][terraform_modules]. A few of them are c
 
 This module has a few dependencies: 
 
-- [Terraform 1.x.x](https://learn.hashicorp.com/terraform/getting-started/install.html)
-- [Go](https://golang.org/doc/install)
-- [github.com/stretchr/testify/assert](https://github.com/stretchr/testify)
-- [github.com/gruntwork-io/terratest/modules/terraform](https://github.com/gruntwork-io/terratest)
-
-
 
 
 
@@ -110,7 +104,7 @@ Here is an example of how you can use this module in your inventory structure:
 | name | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
 | principal\_id | The ID of the Principal (User, Group or Service Principal) to assign the Role Definition to. Changing this forces a new resource to be created. | `list(string)` | `[]` | no |
 | private\_dns\_zone\_name | The name of the private dns zone name which will used to create private endpoint link. | `string` | `"privatelink.blob.core.windows.net"` | no |
-| public\_network\_enabled | Is the Data Factory visible to the public network? Defaults to true. | `bool` | `true` | no |
+| public\_network\_enabled | Is the Data Factory visible to the public network? Defaults to true. | `bool` | `false` | no |
 | read | Used when retrieving the Resource Group. | `string` | `"5m"` | no |
 | repository | Terraform current module repo | `string` | `""` | no |
 | resource\_group\_name | The name of the resource group in which to create the virtual network. | `string` | `""` | no |

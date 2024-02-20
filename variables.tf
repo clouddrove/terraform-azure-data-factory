@@ -95,7 +95,7 @@ variable "delete" {
 
 variable "public_network_enabled" {
   type        = bool
-  default     = true
+  default     = false
   description = "Is the Data Factory visible to the public network? Defaults to true."
 }
 
