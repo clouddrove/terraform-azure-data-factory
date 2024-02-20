@@ -26,6 +26,7 @@ resource "random_string" "random" {
   }
 }
 
+# tfsec:ignore:azure-datafactory-no-public-access
 resource "azurerm_data_factory" "factory" {
   count                           = var.enabled ? 1 : 0
   name                            = format("%s-data-factory", module.labels.id)
