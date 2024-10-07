@@ -68,4 +68,3 @@ module "data_factory" {
   # # virtual_network_id = module.vnet.vnet_id
   # subnet_id = module.subnet.default_subnet_id[0]
 }
-
