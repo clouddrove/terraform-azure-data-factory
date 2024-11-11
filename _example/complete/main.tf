@@ -1,5 +1,6 @@
 provider "azurerm" {
   features {}
+  subscription_id = "01111111111110-11-11-11-11"
 }
 
 ## Resource Group
@@ -24,7 +25,7 @@ module "vnet" {
 
 module "subnet" {
   source               = "clouddrove/subnet/azure"
-  version              = "1.1.0"
+  version              = "1.2.1"
   name                 = "app"
   environment          = "test"
   resource_group_name  = module.resource_group.resource_group_name
